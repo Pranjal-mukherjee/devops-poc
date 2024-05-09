@@ -1,0 +1,13 @@
+buiold:
+checkpout
+jdk 
+docker login
+ghcr push
+
+deploy:
+checkout repo
+aws key pair github secret
+ssh ec2 
+ghcr login
+image pull
+run

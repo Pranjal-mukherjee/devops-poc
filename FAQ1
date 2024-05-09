@@ -1,0 +1,19 @@
+
+bind mounting 
+volume mounting
+placve docker file in seprate 
+use of none network 
+if we are using host network then in which (localhost,ip,docker ip) we can connect
+can we use muliple cmd/entrypoint in docker file
+docker build --help
+
+
+22 feb
+run the entrypoint/cmd docker file
+
+
+28 feb
+study about rsync and scp commands
+
+29feb
+publish the package using github actions

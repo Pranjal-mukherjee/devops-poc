@@ -1,0 +1,12 @@
+ssh-keygen commadn connect with ec2
+and ssh copy id command
+firewall d and firewall cmd command
+
+
+AMI - BREIF
+ebs 
+mounting
+mks ext4
+ansible using aws
+Instance lifecycle
+Instance type naming convention

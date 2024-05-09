@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/usr/share/nginx/html
+    networks:
+      - network1
+  apache:
+    image: httpd
+    ports:
+      - "8002:80"
+    networks:
+      - network1
+    volumes:
+      - named_volume1:/usr/local/apache2/htdocs
+  custom_image:
+    build:
+      context: ../docker-app
+      dockerfile: ../Docker/Dockerfile
+      args:
+        - NODE_VERSION=latest
+    image: node_image
+    ports:
+      - "3000:3000"
+    networks:
+      - network2
+    volumes:
+      - named_volume2:/home/pranjal.mukharjee/docker-app
+networks:
+  network1:
+  network2:
+volumes:
+  named_volume1:
+  named_volume2:
+

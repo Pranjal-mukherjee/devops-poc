@@ -1,0 +1,44 @@
+version: '3'
+services:
+  database:
+    image: mysql:latest
+    environment:
+     - MYSQL_ROOT_PASSWORD=Test@1234
+     - MYSQL_DATABASE=todo
+    ports:
+     - 3307:3306
+    volumes:
+     - todo-list-mysql-data:/var/lib/mysql
+    networks:
+      - main_network
+  
+  backend:
+    build: 
+      dockerfile: Dockerfile
+      context: ./docker_backend
+    depends_on:
+      - database
+    restart: always
+    environment:
+     - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/todo
+     - SPRING_DATASOURCE_USERNAME=root
+     - SPRING_DATASOURCE_PASSWORD=Test@1234
+    ports:
+      - 9193:9193
+    volumes:
+      - backend_volume:/opt
+    networks:
+      - main_network
+  frontend:
+    image: ghcr.io/pranjal-mukherjee/bootcamp26-frontend:16
+    ports:
+      - 3000:3000
+    networks:
+      - main_network
+    volumes:
+      - ./docker-frontend:/app
+volumes:
+  todo-list-mysql-data:
+  backend_volume:
+networks:
+  main_network:

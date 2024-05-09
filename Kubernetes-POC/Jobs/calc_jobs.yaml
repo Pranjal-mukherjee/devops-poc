@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name:  calc-jobs
+spec:
+  template:
+    spec:
+      containers:
+        - image: ubuntu
+          name:  calculator
+          command: ['expr' , '3' ,'+' ,'2']
+      restartPolicy: Never
